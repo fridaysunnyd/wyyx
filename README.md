@@ -1,30 +1,10 @@
-# wyyx
-
-> A Vue.js project
-
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+#准备
+1. 标签使用h5新标签
+2. 样式使用stylus和MintUI，主题色#B4282D
+3. 单页应用，五个路由，拆出底部
+4. 头部用插槽
+5. 橡皮筋导航组件
+6. 首页、分类数据用mock
+7. 识物数据用网易接口
+8. 首页、分类路由携带paramete参数
+9. 识物路由用普通二级路由
