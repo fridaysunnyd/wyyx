@@ -1,23 +1,28 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <router-view/>
+    <FoodGuide />
   </div>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+  import FoodGuide from './components/FoodGuide/FoodGuide.vue'
+  import {
+    reqHome,
+    reqClassify,
+    reqGoods
+  } from './api'
+  export default {
+    components:{
+      FoodGuide
+    },
+    mounted(){
+      this.$store.dispatch('getHomeInfo')
+      this.$store.dispatch('getGoodsInfo')
+      this.$store.dispatch('getClassifyInfo')
+    }
+  }
 </script>
+<style lang="stylus" rel="stylesheet/stylus" scoped>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

@@ -1,12 +1,40 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>wyyx</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+  <title>我的网易严选</title>
+  <link rel="stylesheet" href="/static/css/reset.css">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_1075374_x0c73gknhbh.css">
+  <style type="text/css">
+    body{
+      font-size: .5rem;
+      height: 300rem;
+    }
+  </style>
+</head>
+<body>
+<div id="app"></div>
+</body>
+<script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
+<script>
+  if ('addEventListener' in document) {
+    document.addEventListener('DOMContentLoaded', function() {
+      FastClick.attach(document.body);
+    }, false);
+  }
+  if(!window.Promise) {
+    document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"'+'>'+'<'+'/'+'script>');
+  }
+</script>
+<script type="text/javascript">
+  (function(){
+    var html = document.documentElement;
+    // 获取屏幕宽度（px）
+    var hWidth = html.getBoundingClientRect().width;
+    // 设置 html 标签的 font-size 大小为 hWidth/15
+    html.style.fontSize = hWidth/10 + 'px';
+  })()
+
+</script>
 </html>
