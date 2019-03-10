@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view/>
+    <div class="view">
+      <router-view/>
+    </div>
     <FoodGuide />
   </div>
 </template>
@@ -18,7 +20,6 @@
     },
     mounted(){
       this.$store.dispatch('getHomeInfo')
-      this.$store.dispatch('getGoodsInfo')
       this.$store.dispatch('getClassifyInfo')
     }
   }

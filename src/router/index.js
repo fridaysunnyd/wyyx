@@ -49,7 +49,7 @@ export default new Router({
     },
     {
       path: '/',
-      component: Home
+      redirect:'/home'
     },
   ]
 })
