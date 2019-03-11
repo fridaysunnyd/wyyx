@@ -20,7 +20,6 @@
     },
     mounted(){
       this.$store.dispatch('getHomeInfo')
-      this.$store.dispatch('getClassifyInfo')
     }
   }
 </script>

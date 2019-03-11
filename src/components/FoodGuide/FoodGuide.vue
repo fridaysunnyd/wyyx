@@ -4,7 +4,7 @@
         <i class="iconfont icon-shouye"></i>
         <span>首页</span>
       </router-link>
-      <router-link to="/cate" class="router">
+      <router-link to="/cate/subMenu/1008000" class="router">
         <i class="iconfont icon-chouti"></i>
         <span>分类</span>
       </router-link>
