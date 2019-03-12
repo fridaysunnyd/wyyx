@@ -7,6 +7,7 @@ import Product from '../pages/Product/Product.vue'
 import ShopCard from '../pages/ShopCard/ShopCard.vue'
 import Personal from '../pages/Personal/Personal.vue'
 import SubMenu from '../pages/SubMenu/SubMenu.vue'
+import ProductMain from '../pages/ProductMain/ProductMain.vue'
 
 Vue.use(Router)
 
@@ -39,9 +40,19 @@ export default new Router({
     {
       path: '/product',
       component: Product,
+      redirect:'/product/9',
       meta:{
         isFoodGuide:true
-      }
+      },
+      children:[
+        {
+          path:'/product/:id',
+          component:ProductMain,
+          meta:{
+            isFoodGuide:true
+          }
+        }
+      ]
     },
     {
       path: '/shopcard',

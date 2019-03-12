@@ -9,7 +9,7 @@
       <div class="main">
         <aside class="cate_wrap">
           <div class="inner">
-            <div v-for="(item,index) in cateName" :key="index" class="nav">
+            <div v-for="(item,index) in cateName" :key="index" class="nav" >
               <router-link :to="`/cate/subMenu/${item.id}`">
                 <span>
                   {{item.name}}
@@ -27,8 +27,13 @@
   import {mapGetters} from 'vuex'
   import BScroll from 'better-scroll'
   export default {
+    data(){
+      return {
+        isA:false
+      }
+    },
     computed:{
-      ...mapGetters(['cateName'])
+      ...mapGetters(['cateName']),
     },
     watch:{
       cateName(){
