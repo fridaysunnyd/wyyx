@@ -3,11 +3,10 @@ const state = {
   classifyInfo:[]
 }
 const actions = {
-  async getClassifyInfo({commit},cb){
+  async getClassifyInfo({commit}){
     const result = await reqClassify()
     if(result.code === 0){
       commit('reseive_classifyInfo',result.data)
-      cb()
     }else {
       console.log('请求出错');
     }

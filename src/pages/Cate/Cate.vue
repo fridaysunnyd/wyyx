@@ -11,7 +11,7 @@
           <div class="inner">
             <div v-for="(item,index) in cateName" :key="index" class="nav" >
               <router-link :to="`/cate/subMenu/${item.id}`">
-                <span>
+                <span :class="{active:`/cate/subMenu/${item.id}` === $route.path}">
                   {{item.name}}
                 </span>
               </router-link>
@@ -27,11 +27,6 @@
   import {mapGetters} from 'vuex'
   import BScroll from 'better-scroll'
   export default {
-    data(){
-      return {
-        isA:false
-      }
-    },
     computed:{
       ...mapGetters(['cateName']),
     },
@@ -42,7 +37,7 @@
             click:true
           })
         })
-      }
+      },
     }
   }
 </script>
@@ -74,6 +69,7 @@
         width: 2.16rem;
         height: 15rem
         background-color: #fff;
+        overflow hidden
         .inner
           height 15rem
           padding: .53333rem 0
@@ -86,4 +82,6 @@
               color: #333;
               line-height: .66667rem;
               font-size: .37333rem;
+            .active
+              color $red
 </style>

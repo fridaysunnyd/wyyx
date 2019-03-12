@@ -24,7 +24,9 @@
               <ul ref="scrollItems" class="nav_inner">
                 <li v-for="(title,index) in shiWuTap" :key="title.tabId">
                   <router-link  :to="`/product/${title.tabId}`">
-                    {{title.tabName}}
+                    <span :class="{active:`/product/${title.tabId}` === $route.path}">
+                      {{title.tabName}}
+                    </span>
                   </router-link>
                 </li>
               </ul>
@@ -33,7 +35,9 @@
         </header>
       </div>
       <Splice></Splice>
-      <router-view></router-view>
+      <div class="main">
+        <router-view></router-view>
+      </div>
     </div>
 </template>
 
@@ -48,7 +52,6 @@
       })
     },
     mounted(){
-      this.initListScroll (this.$refs.scrollItems)
       this.$store.dispatch('getShiWuTap',() =>{
         this.$nextTick(() =>{
           new BScroll('.nav_list',{
@@ -58,20 +61,6 @@
         })
       })
     },
-    methods:{
-      initListScroll (ref) {
-        const listWrapper = ref
-        let width = 0
-        let length = listWrapper.children.length
-        while (length) {
-          width += listWrapper.children[length-1].offsetWidth*1.5
-          length--
-        }
-        console.log(width);
-        ref.style.width = width + 50 + 'px'
-      },
-
-    },
     components:{
       Splice,
     }
@@ -79,18 +68,20 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
+  @import "../../common/stylus/mixins.styl"
   #wrap
     position relative
     display flex
     flex-direction column
     .header_wrap
-      height 75px
+      height 82px
       width 10rem
       background-color: #fff;
       clearFix()
       header
         position fixed
         top 0
+        left 0
         z-index 5
         width 100%
         .top
@@ -127,22 +118,28 @@
           position relative
           background-color: #fff;
           .nav_list
+            display flex
             height 30px
             padding-right 1.33333rem
             padding-left .5rem
             overflow hidden
+            background-color: #fff;
             .nav_inner
+              display flex
+              white-space nowrap
               height: .8rem;
               color #666
               font-size: .37333rem;
               li
+                flex 1 0
                 float left
                 height 100%
                 line-height 28px
                 text-align center
                 padding: 0 .08rem;
                 margin: 0 .2rem;
-
-
-
+                .active
+                  color $red
+    .main
+      float left
 </style>

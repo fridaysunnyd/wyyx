@@ -234,8 +234,6 @@
       Splice
     },
     mounted(){
-      this.initListScroll (this.$refs.scrollItems)
-      this.initListScroll (this.$refs.adScrollItems)
       this.$nextTick(() =>{
         new BScroll('.nav_list',{
           scrollX: true,
@@ -253,20 +251,6 @@
         },
       })
     },
-    methods:{
-      initListScroll (ref) {// todo
-        const listWrapper = ref
-        let width = 0
-        let length = listWrapper.children.length
-        while (length) {
-          width += listWrapper.children[length-1].offsetWidth*1.5
-          length--
-        }
-        console.log(width);
-        ref.style.width = width + 50 + 'px'
-      },
-
-    }
   }
 </script>
 
@@ -286,6 +270,7 @@
         top 0
         z-index 5
         width 100%
+        background-color: #fff;
         .top
           display flex
           justify-content space-between
@@ -322,29 +307,29 @@
             font-size: .32rem;
         nav
           position relative
-          background-color: #fff;
+          background-color: #fff
+          margin-top .1rem
           .nav_list
-            height 30px
-            padding-right 1.33333rem
-            padding-left .5rem
+            display flex
             overflow hidden
             .nav_inner
-              height: .8rem;
-              color #666
-              font-size: .37333rem;
+              white-space: nowrap;
+              display: flex;
+              height: 100%
               li
-                float left
-                height 100%
-                line-height 28px
+                flex: 1 0 auto;
+                margin-left: .26667rem
                 padding: 0 .21333rem;
-                text-align center
+                text-align: center;
+                color #333
+                font-size: .37333rem
           .more
             position absolute
             right 0
             top 0
             width: 1.33333rem;
-            height: .8rem;
-            line-height .8rem
+            height: .48rem;
+            line-height .48rem
             text-align: center;
             background: #fff;
             color #666
@@ -459,10 +444,12 @@
           img
             width 100%
         .ad_list_wrap
+          display flex
           width 100%
           overflow hidden
           .ad_list
             display flex
+            white-space nowrap
             padding: 0 .4rem .4rem;
             .ad_item
               width: 2.66667rem;

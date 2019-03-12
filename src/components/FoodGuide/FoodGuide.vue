@@ -1,31 +1,33 @@
 <template>
     <nav id="wrap" v-if="$route.meta.isFoodGuide">
       <router-link to="/home" class="router">
-        <i class="iconfont icon-shouye"></i>
-        <span>首页</span>
+        <i :class="{active:$route.path === '/home'}" class="iconfont icon-shouye"></i>
+        <span :class="{active:$route.path === '/home'}">首页</span>
       </router-link>
       <router-link to="/cate/subMenu/1008000" class="router">
-        <i class="iconfont icon-chouti"></i>
-        <span>分类</span>
+        <i :class="{active:$route.path.split('/')[1] === 'cate'}" class="iconfont icon-chouti"></i>
+        <span :class="{active:$route.path.split('/')[1] === 'cate'}">分类</span>
       </router-link>
       <router-link to="/product" class="router">
-        <i class="iconfont icon-tuxiangshibie"></i>
-        <span>识物</span>
+        <i :class="{active:$route.path.split('/')[1] === 'product'}" class="iconfont icon-tuxiangshibie"></i>
+        <span :class="{active:$route.path.split('/')[1] === 'product'}">识物</span>
       </router-link>
       <router-link to="/shopcard" class="router">
-        <i class="iconfont icon-gouwuche"></i>
-        <span>购物车</span>
+        <i :class="{active:$route.path === '/shopcard'}" class="iconfont icon-gouwuche"></i>
+        <span :class="{active:$route.path === '/shopcard'}">购物车</span>
       </router-link>
       <router-link to="/personal" class="router">
-        <i class="iconfont icon-geren"></i>
-        <span>个人</span>
+        <i :class="{active:$route.path === '/personal'}" class="iconfont icon-geren"></i>
+        <span :class="{active:$route.path === '/personal'}">个人</span>
       </router-link>
     </nav>
 </template>
 
 <script>
 
-  export default {}
+  export default {
+
+  }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
@@ -56,5 +58,6 @@
         width: .53333rem;
         height: .53333rem;
         font-size: .53333rem;
-
+      .active
+        color $red
 </style>

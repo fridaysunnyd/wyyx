@@ -1,13 +1,15 @@
 <template>
     <div id="wrap">
       <div class="sub" v-if="subMenu">
-        <div class="banner">
-          <img :src="subMenu.bannerUrl" alt="">
-        </div>
-        <div class="menu">
-          <div class="item" v-for="(item,index) in subMenu.subCateList" :key="index">
-            <img :src="item.wapBannerUrl" alt="">
-            <span>{{item.name}}</span>
+        <div>
+          <div class="banner">
+            <img v-lazy="subMenu.bannerUrl" alt="">
+          </div>
+          <div class="menu">
+            <div class="item" v-for="(item,index) in subMenu.subCateList" :key="index">
+              <img v-lazy="item.wapBannerUrl" alt="">
+              <span>{{item.name}}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -27,13 +29,18 @@
       }
     },
     mounted(){
-      this.$store.dispatch('getClassifyInfo',()=>{
-        this.$nextTick(()=>{
-          new BScroll('#wrap',{
-            click:true,
+      this.$store.dispatch('getClassifyInfo')
+    },
+    watch:{
+      subMenu(){
+        if(!this.scroll){
+          this.$nextTick(() =>{
+            this.scroll = new BScroll('.sub',{
+              click:true
+            })
           })
-        })
-      })
+        }
+      }
     }
   }
 </script>
@@ -45,16 +52,19 @@
   height 15rem
   float right
   box-sizing border-box
-  padding: .4rem .4rem .28rem;
+  display flex
+  overflow hidden
   .sub
-    .banner
-      img
-        width: auto
-        height: 2.56rem;
-        margin-bottom: .42667rem;
-    .menu
-      clearFix()
-      .item
+    height: 15rem
+    div
+      .banner
+        img
+          width: auto
+          height: 2.56rem;
+          margin-bottom: .42667rem;
+      .menu
+        clearFix()
+        .item
           float left
           margin-right: .45333rem;
           width: 1.92rem;
@@ -68,6 +78,7 @@
             color: #333;
             text-align: center;
             line-height: .48rem;
+            white-space nowrap
           &:nth-child(3n)
             margin-right 0
 
