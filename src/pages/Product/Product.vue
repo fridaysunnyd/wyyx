@@ -142,4 +142,5 @@
                   color $red
     .main
       float left
+      height 15rem
 </style>

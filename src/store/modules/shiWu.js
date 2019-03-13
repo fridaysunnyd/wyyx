@@ -27,8 +27,8 @@ const actions = {
       console.log('请求出错');
     }
   },
-  async getUser({commit}){
-    const result = await reqUserAuto(1)
+  async getUser({commit},pageNum){
+    const result = await reqUserAuto(pageNum)
     if(+result.code === 200){
       commit('reseive_user',result.data.result)
     }else {
@@ -44,7 +44,7 @@ const mutations = {
     state.manual = data
   },
   reseive_user(state,data){
-    state.user = data
+    state.user.push(...data)
   },
 }
 const getters = {

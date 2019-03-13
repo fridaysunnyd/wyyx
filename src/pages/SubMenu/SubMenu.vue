@@ -3,11 +3,11 @@
       <div class="sub" v-if="subMenu">
         <div>
           <div class="banner">
-            <img v-lazy="subMenu.bannerUrl" alt="">
+            <img v-lazy="subMenu.bannerUrl" :key="subMenu.bannerUrl" alt="">
           </div>
           <div class="menu">
             <div class="item" v-for="(item,index) in subMenu.subCateList" :key="index">
-              <img v-lazy="item.wapBannerUrl" alt="">
+              <img v-lazy="item.wapBannerUrl" :key="item.wapBannerUrl" alt="">
               <span>{{item.name}}</span>
             </div>
           </div>
